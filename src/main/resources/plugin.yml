@@ -1,0 +1,6 @@
+main: ro.steve.gens.GensMain
+version: 1.0
+api-version: 1.16
+name: Gens
+commands:
+  gens:

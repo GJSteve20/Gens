@@ -1,0 +1,44 @@
+Gens:
+  tier_1: #must starts with tier_ and to have a number in ascending way 1,2,3,4...
+    material: COAL_ORE
+    name: '<G#212121>Tier I Gen</G#9c9c9c>'
+    description:
+      - ''
+      - '&fGenerate a <#212121>Coal &fevery'
+      - '&a%time% seconds'
+      - ''
+    time: 10 #time is in seconds
+    player_max_distance: 16
+    upgrade_cost: 10000.0
+    item:
+      material: COAL
+      amount: 1
+      name: '<G#212121>Coal</G#9c9c9c>'
+      description:
+        - ''
+        - '&fSell with &a/gens sellall'
+        - '&fPrice: &a$%price%&7/&fqty'
+        - ''
+      price: 0.5
+
+  tier_2:
+    material: COPPER_ORE
+    name: '<G#f7a839>Tier II Gen</G#6ad164>'
+    description:
+      - ''
+      - '&fGenerate a <#f7a839>Raw Copper &fevery'
+      - '&a10 seconds'
+      - ''
+    time: 10
+    player_max_distance: 16
+    upgrade_cost: 25000.0
+    item:
+      material: RAW_COPPER
+      amount: 1
+      name: '<G#f7a839>Raw Copper</G#6ad164>'
+      description:
+        - ''
+        - '&fSell with &a/gens sellall'
+        - '&fPrice: &a$%price%/&fqty'
+        - ''
+      price: 0.7

@@ -1,0 +1,26 @@
+Buy:
+  name: '<G#00ff51>Gens Buy Menu</G#0088ff>'
+  size: 27
+
+  fillers:
+    filler:
+      - 'BBBGGGWWW'
+      - 'BWGGAGGBW'
+      - 'WWWGGGBBB'
+    replacer:
+      B: BLACK_STAINED_GLASS_PANE
+      G: GRAY_STAINED_GLASS_PANE
+      W: WHITE_STAINED_GLASS_PANE
+      A: AIR
+  items:
+    1:
+      material: COAL_ORE
+      name: '<G#212121>Tier I Gen</G#9c9c9c>'
+      glowing: true
+      description:
+        - ''
+        - '&fClick here to buy for'
+        - '&a$10000.0'
+        - ''
+      action: buy_tier_1 #for other action, put buy_tier_2, buy_tier_3 and so on
+      slot: 13
