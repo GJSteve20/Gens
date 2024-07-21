@@ -27,6 +27,13 @@ public class GensCommands implements CommandExecutor {
                     new GensUpgradeCommand(s);
                 }
             }
+            case "sellall" -> {
+                if (!(s instanceof Player)) {
+                    new GensHelpCommand(s);
+                } else {
+                    new GensSellAllCommand(s);
+                }
+            }
             default -> new GensHelpCommand(s);
         }
         return false;
