@@ -14,13 +14,49 @@ Buy:
       A: AIR
   items:
     1:
-      material: COAL_ORE
-      name: '<G#212121>Tier I Gen</G#9c9c9c>'
+      material: '%current_tier%' #this placeholder is influenced by action, so this will be tier 1
+      name: '%current_tier_name%'
       glowing: true
       description:
         - ''
         - '&fClick here to buy for'
-        - '&a$10000.0'
+        - '&a%upgrade_cost%'
         - ''
       action: buy_tier_1 #for other action, put buy_tier_2, buy_tier_3 and so on
       slot: 13
+
+Upgrade:
+  name: '<G#00ff51>Upgrade Menu</G#0088ff>'
+  size: 27
+
+  fillers:
+    filler:
+      - 'LLOWOOLLO'
+      - 'LOAOWOALO'
+      - 'OLOOOWOOL'
+    replacer:
+      L: LIME_STAINED_GLASS_PANE
+      O: ORANGE_STAINED_GLASS_PANE
+      W: WHITE_STAINED_GLASS_PANE
+      A: AIR
+  items:
+    1:
+      material: "%next_tier%"
+      name: '&fUpgrade to %next_tier_name%'
+      glowing: true
+      description:
+        - ''
+        - '&fClick here to upgrade'
+        - '&ffor &a%next_tier_upgrade_cost%'
+      action: upgrade
+      slot: 11
+    2:
+      material: BARRIER
+      name: '&cCancel'
+      glowing: false
+      description:
+        - ''
+        - '&fClick here to cancel'
+        - '&fthe upgrade'
+      action: close
+      slot: 15

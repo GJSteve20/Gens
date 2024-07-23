@@ -3,6 +3,7 @@ package ro.steve.gens;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import ro.steve.gens.commands.GensCommands;
 import ro.steve.gens.configuration.Configuration;
 import ro.steve.gens.listeners.GensListener;
 import ro.steve.gens.storage.Storage;
@@ -22,6 +23,7 @@ public class GensMain extends JavaPlugin {
         setupEconomy();
         C = new Configuration(this);
         S = new Storage(this);
+        new GensCommands(this);
         new GensListener(this);
         new GensTask();
     }

@@ -4,9 +4,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import ro.steve.gens.inventory.GensInventory;
 
 public class GensCommands implements CommandExecutor {
+
+    public GensCommands(Plugin p) {
+        p.getServer().getPluginCommand("gens").setExecutor(this::onCommand);
+    }
 
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] a) {

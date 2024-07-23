@@ -12,6 +12,7 @@ import ro.steve.gens.item.ItemBuilder;
 import ro.steve.gens.utils.Color;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class GensInventory implements InventoryHolder {
 
@@ -61,12 +62,38 @@ public class GensInventory implements InventoryHolder {
         if (yaml.getConfigurationSection(path + ".items") == null) {
             return;
         }
+        var s = GensMain.getInstance().getStorage();
+        var g = GensMain.getInstance().getConfiguration().getConfig("gens");
+        AtomicInteger tier = new AtomicInteger();
         yaml.getConfigurationSection(path + ".items").getKeys(false).forEach(k -> {
             var p = path + ".items." + k + ".";
+            if (location != null) {
+                tier.set((int) s.getTier(location));
+            } else {
+                tier.set(Integer.parseInt(yaml.getString(p + "action").replace("buy_tier_", "")));
+            }
+            int next = tier.get() + 1;
+            System.out.println(next);
             var b = new ItemBuilder();
-            b.type(Material.valueOf(yaml.getString(p + "material")));
-            b.name(yaml.getString(p + "name"));
-            b.lore(yaml.getStringList(p + "description"));
+            var material = yaml.getString(p + "material");
+            if (material.equalsIgnoreCase("%next_tier%")) {
+                material = g.getString("Gens.tier_" + next + ".material");
+            }
+            if (material.equalsIgnoreCase("%current_tier%")) {
+                material = g.getString("Gens.tier_" + tier + ".material");
+            }
+            b.type(Material.valueOf(material));
+            var name = yaml.getString(p + "name");
+            if (name.contains("%next_tier_name%")) {
+                name = name.replace("%next_tier_name%", g.getString("Gens.tier_" + next + ".name"));
+            }
+            if (name.equalsIgnoreCase("%current_tier_name%")) {
+                name = name.replace("%current_tier_name%", g.getString("Gens.tier_" + tier.get() + ".name"));
+            }
+            b.name(name);
+            b.lore(yaml.getStringList(p + "description"),
+                    "%upgrade_cost%;" + g.getString("Gens.tier_" + tier.get() + ".upgrade_cost"),
+                    "%next_tier_upgrade_cost%;" + g.getString("Gens.tier_" + next + ".upgrade_cost"));
             if (yaml.get(p + "glowing") != null) {
                 b.glowing(yaml.getBoolean(p + "glowing"));
             }

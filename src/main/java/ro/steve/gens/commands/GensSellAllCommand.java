@@ -19,15 +19,17 @@ public class GensSellAllCommand {
         var money = new AtomicDouble(0.0);
         var c = GensMain.getInstance().getConfiguration().getConfig("gens");
         Arrays.stream(((Player) s).getInventory().getContents()).forEach(i -> {
+            if (i == null) {
+                return;
+            }
             var check = PersistentChecker.check(i, "gens-item", PersistentDataType.STRING);
             if (check != null) {
                 items.set(items.get() + i.getAmount());
                 money.set(money.get() + (i.getAmount() * c.getDouble("Gens." + check + ".item.price")));
-                i.setType(Material.AIR);
+                ((Player) s).getInventory().remove(i);
             }
         });
-        System.out.println(items.get());
-        if (items.get() != 0) {
+        if (items.get() == 0) {
             //send message no items
         } else {
             GensMain.getInstance().getEconomy().depositPlayer(Bukkit.getOfflinePlayer(((Player) s).getUniqueId()), money.get());
