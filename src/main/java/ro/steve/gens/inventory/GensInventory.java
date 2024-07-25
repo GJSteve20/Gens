@@ -73,7 +73,6 @@ public class GensInventory implements InventoryHolder {
                 tier.set(Integer.parseInt(yaml.getString(p + "action").replace("buy_tier_", "")));
             }
             int next = tier.get() + 1;
-            System.out.println(next);
             var b = new ItemBuilder();
             var material = yaml.getString(p + "material");
             if (material.equalsIgnoreCase("%next_tier%")) {

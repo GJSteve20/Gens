@@ -10,6 +10,7 @@ public class GensListener {
         m.registerEvents(new EntityChangeBlock(), plugin);
         m.registerEvents(new GensBreak(), plugin);
         m.registerEvents(new GensExplode(), plugin);
+        m.registerEvents(new GensInteract(), plugin);
         m.registerEvents(new GensInventoryListener(), plugin);
         m.registerEvents(new GensPlace(), plugin);
         m.registerEvents(new PistonExtend(), plugin);

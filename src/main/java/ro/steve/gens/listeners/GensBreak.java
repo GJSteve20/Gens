@@ -8,6 +8,7 @@ import org.bukkit.persistence.PersistentDataType;
 import ro.steve.gens.GensMain;
 import ro.steve.gens.inventory.GensInventory;
 import ro.steve.gens.item.ItemBuilder;
+import ro.steve.gens.utils.SendMessage;
 
 public class GensBreak implements Listener {
 
@@ -24,7 +25,7 @@ public class GensBreak implements Listener {
             return;
         }
         if (s.getTier(l) == null) {
-            //send error message
+            SendMessage.sendMessage(p, "dev");
         } else {
             var path = "Gens.tier_" + s.getTier(l) + ".";
             var i = new ItemBuilder()

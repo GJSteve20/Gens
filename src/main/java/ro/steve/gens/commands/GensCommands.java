@@ -29,7 +29,7 @@ public class GensCommands implements CommandExecutor {
                 if (!(s instanceof Player)) {
                     new GensHelpCommand(s);
                 } else {
-                    new GensUpgradeCommand(s);
+                    new GensUpgradeCommand(s, null);
                 }
             }
             case "sellall" -> {

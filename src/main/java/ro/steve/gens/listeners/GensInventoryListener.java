@@ -1,6 +1,7 @@
 package ro.steve.gens.listeners;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -11,6 +12,7 @@ import ro.steve.gens.GensMain;
 import ro.steve.gens.inventory.GensInventory;
 import ro.steve.gens.item.ItemBuilder;
 import ro.steve.gens.utils.PersistentChecker;
+import ro.steve.gens.utils.SendMessage;
 
 public class GensInventoryListener implements Listener {
 
@@ -38,16 +40,16 @@ public class GensInventoryListener implements Listener {
         if (a == null) {
             return;
         }
+        var o = Bukkit.getOfflinePlayer(p.getUniqueId());
         if (a.toString().startsWith("buy_")) {
             var path = "Gens." + a.toString().replace("buy_", "") + ".";
             var money = c.getDouble(path + "upgrade_cost");
             if (p.getInventory().firstEmpty() == -1) {
-                //send message
+                SendMessage.sendMessage(p, "inventory-full");
                 return;
             }
-            var o = Bukkit.getOfflinePlayer(p.getUniqueId());
             if (!e.has(o, money)) {
-                //send message
+                SendMessage.sendMessage(p, "not-enough-money", "%money%;" + money);
                 p.closeInventory();
                 return;
             }
@@ -61,6 +63,38 @@ public class GensInventoryListener implements Listener {
             e.withdrawPlayer(o, money);
             p.getInventory().addItem(i);
             p.closeInventory();
+        }
+        if (a.toString().equalsIgnoreCase("upgrade")) {
+            if (l == null) {
+                p.closeInventory();
+                SendMessage.sendMessage(p, "dev");
+                return;
+            }
+            String[] split = l.toString().split(";");
+            var location = new Location(Bukkit.getWorld(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]), Integer.parseInt(split[3]));
+            var tier = s.getTier(location);
+            if (tier == null) {
+                p.closeInventory();
+                SendMessage.sendMessage(p, "dev");
+                return;
+            }
+            int t = ((int) tier) + 1;
+            var path = "Gens.tier_" + t + ".";
+            var money = c.getDouble(path + "upgrade_cost");
+            if (!e.has(o, money)) {
+                SendMessage.sendMessage(p, "not-enough-money", "%money%;" + money);
+                p.closeInventory();
+                return;
+            }
+            e.withdrawPlayer(o, money);
+            location.getBlock().setType(Material.valueOf(c.getString(path + "material")));
+            s.addGen(location, "tier_" + t, true);
+            SendMessage.sendMessage(p, "upgraded", "%tier%;" + t);
+            p.closeInventory();
+        }
+        if (a.toString().equalsIgnoreCase("close")) {
+            p.closeInventory();
+            SendMessage.sendMessage(p, "upgrade-cancelled");
         }
     }
 }

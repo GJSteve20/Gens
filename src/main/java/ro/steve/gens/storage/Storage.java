@@ -46,11 +46,9 @@ public class Storage {
 
     public boolean addGen(Location loc, String tier, boolean upgrade) {
         var parsedLoc = loc.getWorld().getName() + ";" + loc.getBlockX() + ";" + loc.getBlockY() + ";" + loc.getBlockZ();
-        String add;
+        String add = "INSERT INTO Gens (location, tier) VALUES (?,?)";
         if (upgrade) {
-            add = "UPDATE Gens SET tier = ? WHERE location = ?";
-        } else {
-            add = "INSERT INTO Gens (location, tier) VALUES (?,?)";
+            removeGen(loc);
         }
         int t;
         try {

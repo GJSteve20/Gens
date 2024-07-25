@@ -5,7 +5,7 @@ Gens:
     description:
       - ''
       - '&fGenerate a <#212121>Coal &fevery'
-      - '&a%time% seconds'
+      - '&a%time% &fseconds'
       - ''
     time: 10 #time is in seconds
     player_max_distance: 16
@@ -27,7 +27,7 @@ Gens:
     description:
       - ''
       - '&fGenerate a <#f7a839>Raw Copper &fevery'
-      - '&a10 seconds'
+      - '&a%time% &fseconds'
       - ''
     time: 10
     player_max_distance: 16
@@ -42,3 +42,157 @@ Gens:
         - '&fPrice: &a$%price%/&fqty'
         - ''
       price: 0.7
+
+  tier_3:
+    material: IRON_ORE
+    name: '<G#c4b280>Tier III Gen</G#ebe4d1>'
+    description:
+      - ''
+      - '&fGenerate 2 <#c4b280>Raw Iron &fevery'
+      - '&a%time% &fseconds'
+      - ''
+    time: 12
+    player_max_distance: 17
+    upgrade_cost: 40000.0
+    item:
+      material: RAW_IRON
+      amount: 2
+      name: '<G#c4b280>Raw Iron</G#ebe4d1>'
+      description:
+        - ''
+        - '&fSell with &a/gens sellall'
+        - '&fPrice: &a$%price%/&fqty'
+        - ''
+      price: 0.8
+
+  tier_4:
+    material: LAPIS_ORE
+    name: '<G#054ce6>Tier IV Gen</G#61adff>'
+    description:
+      - ''
+      - '&fGenerate 2 <#054ce6>Lapis Lazuli &fevery'
+      - '&a%time% &fseconds'
+      - ''
+    time: 15
+    player_max_distance: 18
+    upgrade_cost: 55000.0
+    item:
+      material: LAPIS_LAZULI
+      amount: 2
+      name: '<G#054ce6>Lapis Lazuli</G#61adff>'
+      description:
+        - ''
+        - '&fSell with &a/gens sellall'
+        - '&fPrice: &a$%price%/&fqty'
+        - ''
+      price: 1.2
+
+  tier_5:
+    material: REDSTONE_ORE
+    name: '<G#b81209>Tier V Gen</G#d6736d>'
+    description:
+      - ''
+      - '&fGenerate 3 <#b81209>Redstone &fevery'
+      - '&a%time% &fseconds'
+      - ''
+    time: 20
+    player_max_distance: 20
+    upgrade_cost: 72000.0
+    item:
+      material: REDSTONE
+      amount: 3
+      name: '<G#b81209>Redstone</G#d6736d>'
+      description:
+        - ''
+        - '&fSell with &a/gens sellall'
+        - '&fPrice: &a$%price%/&fqty'
+        - ''
+      price: 1.4
+
+  tier_6:
+    material: GOLD_ORE
+    name: '<G#f2c307>Tier VI Gen</G#fae387>'
+    description:
+      - ''
+      - '&fGenerate 3 <#f2c307>Raw Gold &fevery'
+      - '&a%time% &fseconds'
+      - ''
+    time: 20
+    player_max_distance: 20
+    upgrade_cost: 85000.0
+    item:
+      material: RAW_GOLD
+      amount: 3
+      name: '<G#f2c307>Raw Gold</G#fae387>'
+      description:
+        - ''
+        - '&fSell with &a/gens sellall'
+        - '&fPrice: &a$%price%/&fqty'
+        - ''
+      price: 1.6
+
+  tier_7:
+    material: EMERALD_ORE
+    name: '<G#23ad33>Tier VII Gen</G#74e881>'
+    description:
+      - ''
+      - '&fGenerate 4 <#23ad33>Emerald &fevery'
+      - '&a%time% &fseconds'
+      - ''
+    time: 24
+    player_max_distance: 24
+    upgrade_cost: 110000.0
+    item:
+      material: EMERALD
+      amount: 4
+      name: '<G#23ad33>Emerald</G#74e881>'
+      description:
+        - ''
+        - '&fSell with &a/gens sellall'
+        - '&fPrice: &a$%price%/&fqty'
+        - ''
+      price: 2.1
+
+  tier_8:
+    material: DIAMOND_ORE
+    name: '<G#28d4e0>Tier VIII Gen</G#d9fdff>'
+    description:
+      - ''
+      - '&fGenerate 5 <#28d4e0>Diamond &fevery'
+      - '&a%time% &fseconds'
+      - ''
+    time: 30
+    player_max_distance: 30
+    upgrade_cost: 140000.0
+    item:
+      material: DIAMOND
+      amount: 5
+      name: '<G#28d4e0>Diamond</G#d9fdff>'
+      description:
+        - ''
+        - '&fSell with &a/gens sellall'
+        - '&fPrice: &a$%price%/&fqty'
+        - ''
+      price: 3
+
+  tier_9:
+    material: ANCIENT_DEBRIS
+    name: '<G#663d2b>Tier IX Gen</G#a16d57>'
+    description:
+      - ''
+      - '&fGenerate 1 <#663d2b>Netherite Scrap &fevery'
+      - '&a%time% &fseconds'
+      - ''
+    time: 30
+    player_max_distance: 30
+    upgrade_cost: 200000.0
+    item:
+      material: NETHERITE_SCRAP
+      amount: 1
+      name: '<G#663d2b>Netherite Scrap</G#a16d57>'
+      description:
+        - ''
+        - '&fSell with &a/gens sellall'
+        - '&fPrice: &a$%price%/&fqty'
+        - ''
+      price: 20
